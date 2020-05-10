@@ -1,6 +1,6 @@
 class CommandExecutor
 
-  def git_command(command)
+  def execute_git_command(command)
     "git status output"
   end
 end
