@@ -1,6 +1,8 @@
+require 'Open3'
+
 class CommandExecutor
 
   def execute_git_command(command)
-    `git status`
+    Open3.capture2("git", "status")
   end
 end

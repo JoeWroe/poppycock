@@ -1,23 +1,24 @@
-require 'command_executor'
+require "Open3"
+require "command_executor"
 
 describe CommandExecutor do
   
   describe ".execute_git_command" do
 
-    context "given the git status command" do
+    context "given the status command" do
 
       it "returns the expexted git status output" do
         command_executor = CommandExecutor.new
 
-        allow(command_executor).to receive(:`).and_return("git status output")
+        allow(Open3).to receive(:capture2).with("git", "status").and_return("git status output")
         
         expect(command_executor.execute_git_command("status")).to eq("git status output")
       end
 
-      it "makes a call to the ruby kernel" do
+      it "makes a call to the Open3" do
         command_executor = CommandExecutor.new
 
-        expect_any_instance_of(Kernel).to receive(:`)
+        expect(Open3).to receive(:capture2).with("git", "status")
 
         command_executor.execute_git_command("status")
       end
