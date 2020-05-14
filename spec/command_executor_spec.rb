@@ -1,4 +1,5 @@
 require "Open3"
+
 require "command_executor"
 
 describe CommandExecutor do
@@ -7,7 +8,7 @@ describe CommandExecutor do
     @command_executor = CommandExecutor.new
   end
   
-  describe ".execute_git_command" do
+  describe "#execute_git_command" do
 
     context "given the status command" do
 
