@@ -18,7 +18,7 @@ describe CommandExecutor do
         expect(@command_executor.execute_git_command("status")).to eq("git status output")
       end
 
-      it "makes a call to the Open3" do
+      it "makes a call to Open3, passing 'git status'" do
         expect(Open3).to receive(:capture2).with("git", "status")
 
         @command_executor.execute_git_command("status")
