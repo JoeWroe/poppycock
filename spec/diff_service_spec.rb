@@ -13,6 +13,14 @@ describe DiffService do
 
       expect(diff_service.complete_diff).to eq("a git diff")
     end
+
+    it "should error if complete diff has not been set" do
+      command_executor = double("command_executor")
+
+      diff_service = DiffService.new(command_executor: command_executor)
+
+      expect { diff_service.complete_diff }.to raise_error(DiffNotSetError)
+    end
   end
   
   describe "#get_diff_for_unstaged_files" do
