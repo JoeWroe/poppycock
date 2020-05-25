@@ -4,7 +4,7 @@ describe DiffService do
   
   describe "#get_diff_for_unstaged_files" do
     
-    it "should obtain the complete diff" do
+    it "should be able to obtain the complete diff" do
       command_executor = double("command_executor")
       allow(command_executor).to receive(:execute_git_command).and_return("a git diff")
 
